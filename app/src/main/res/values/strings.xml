@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Word Search HVDR</string>
+
+    <string name="start">Start</string>
+
+    <string name="word_search_title">Word Search</string>
+
+    <string name="word_search_restart_game_button">Restart Game</string>
+    <string name="word_search_show_result_button">Show Result</string>
+
+    <string name="congratulations">Congratulations!</string>
+    <string name="try_again">Try again!</string>
+
+    <string name="failed_init_title">Failed Initialization</string>
+    <string name="word_search_failed_init_dialog">Failed to find any words for Word Search</string>
+    <string name="word_search_instruction">Find the following words</string>
+
+    <string name="word_search_failed_gameboard_dimensions">gameboardDimensions must be 8 or greater</string>
+    <string name="word_search_failed_max_words">maxWords must be an even number between 2 and 10</string>
+    <string name="word_search_failed_max_word_length">maxWordLength cannot exceed gameboardDimensions</string>
+    <string name="word_search_failed_max_placement_attempts">maxPlacementAttempts must be 50 or greater</string>
+    <string name="word_search_failed_max_word_Attempts">maxWordAttempts must be 100 or greater</string>
+</resources>
