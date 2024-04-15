@@ -1,7 +1,7 @@
 # WordSearchHVDR
 
-* [App Features](app-features)
-* [App Configuration Options](app-configuration-options)
+* [App Features](#app-features)
+* [App Configuration Options](#app-configuration-options)
 * [Project Import Tips](#project-import-tips)
 * [Configure Run Environment](#configure-run-environment)
 * [Readme File](#readme-file)
