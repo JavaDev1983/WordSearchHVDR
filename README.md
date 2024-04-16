@@ -6,7 +6,9 @@
 * [Configure Run Environment](#configure-run-environment)
 * [Readme File](#readme-file)
 
-__Purpose of Project:__ Unsuccessful looking for a complete word search puzzle for an Android device. This project will fill that void.
+---
+
+__Purpose of Project:__ Many unsuccessful attempts looking for a complete word search puzzle for Android. This project will fill that void.
 
 __OS Platform: Android:__ Build: SDK 30
 
@@ -16,13 +18,11 @@ __License:__ MIT License
 
 __Version:__ 1.0
 
-__Date:__ 4/12/2024
+__Date:__ 4/16/2024
 
 __Language:__ U.S. English (only)
 
 __Category:__ Word Search Puzzle
-
-<div id="features"></div>
 
 ---
 
@@ -40,8 +40,8 @@ __Category:__ Word Search Puzzle
 * Selecting a word will produce a random color for the word selection.
 * Game restart button will restart the game and reset any progress.
 * Show result button will show the words by marking them with a red border.
-* Support for night theme.
-* No support for screen rotation.
+* Support for night theme (excludes the gameboard).
+* No support for screen rotation (portrait only).
 
 ---
 
@@ -68,21 +68,18 @@ __Category:__ Word Search Puzzle
 
 ---
 
-#### Beginning screen of Word Search
+| Beginning screen of Word Search   |
+|-----------------------------------|
+| ![Game Start](/images/start.png)  |
 
-![Game Start](/images/start.png)
+| Show Result button selected            |
+|--------------------------------------------|
+| ![Show Word Results](/images/results.png)  |
 
----
 
-#### Show Result button selected
-
-![Show Word Results](/images/results.png)
-
----
-
-#### End of game
-
-![Game Finished](/images/finish.png)
+| End of game screen            |
+|--------------------------------------------|
+| ![Game Finished](/images/finish.png)  |
 
 ---
 
@@ -92,13 +89,13 @@ After cloning this project and opening it in Android Studio, you may receive the
 
 ![Gradle JDK Missing](/images/Gradle-JDK-Missing.png)
 
-Select the link `Select the Gradle JDK location` or change the JDK in settings.
+To resolve this notification, select the link `Select the Gradle JDK location` or change the JDK in settings.
 
-Replace the underscores with your user home directory. This path is dependent on your Android Studio and Gradle SDK installation.
+Replace the underscores with your user home directory. This path is dependent on your Android Studio and Gradle installation.
 
 ![Gradle JDK Setting](/images/Gradle-JDK-Setting.png)
 
-Ensure that a Gradle local.properties is created in the project root directory and that it contains the Gradle SDK directory.
+Ensure the above step created a Gradle `local.properties` file in the project root directory and that it contains the Gradle SDK directory.
 
 ![Local Properties Directory](/images/Local-Properties-Directory.png)
 
@@ -114,7 +111,7 @@ The contents of `local.properties` should be your Gradle SDK directory.
 # Location of the SDK. This is only used by Gradle.
 # For customization when using a Version Control System, please read the
 # header note.
-sdk.dir=C\:\\Users\\wgw_\\AppData\\Local\\Android\\Sdk
+sdk.dir=C\:\\Users\\______\\AppData\\Local\\Android\\Sdk
 ```
 
 ---
@@ -125,7 +122,7 @@ To setup an Android run environment, select `Add Configuration...`.
 
 ![Run Configuration](/images/Run-Configuration.png)
 
-Next select `Add new run configuration...` and select Android.
+Next select `Add new run configuration...` then select Android App.
 
 ![Run Configuration Android](/images/Run-Configuration-Android.png)
 
