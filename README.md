@@ -138,4 +138,4 @@ After the run environment is configured, ensure you have an emulator (Pixel 6 AP
 
 ### Readme File
 
-Android Studio may not display the README.md file due to a bug, just select the editor (code) tab.
+Android Studio may not display the README.md file due to a bug, just select the editor (code) tab or view it from GitHub.
