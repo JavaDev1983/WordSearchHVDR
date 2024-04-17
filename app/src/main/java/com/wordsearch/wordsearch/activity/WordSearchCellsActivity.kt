@@ -11,8 +11,8 @@ import android.widget.TextView
 import android.widget.Toast
 import com.wordsearch.R
 import com.wordsearch.wordsearch.common.CellColorEnum
-import com.wordsearch.wordsearch.common.WordSearchUtil
 import com.wordsearch.wordsearch.common.WordDirectionEnum
+import com.wordsearch.wordsearch.common.WordSearchUtil
 import com.wordsearch.wordsearch.common.WordSearchValues
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.cellColorEnumArray
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.currentSelectedCellColorEnum
@@ -52,7 +52,7 @@ abstract class WordSearchCellsActivity : WordSearchBaseActivity() {
             } else if ((WordSearchValues.point1.x > WordSearchValues.point2.x && WordSearchValues.point1.y < WordSearchValues.point2.y) || (WordSearchValues.point1.x < WordSearchValues.point2.x && WordSearchValues.point1.y > WordSearchValues.point2.y)) {
                 onSelectDiagonalUp()
             } else {
-                Log.d(TAG, ">>Undefined5")
+                Log.d(TAG, ">>Undefined")
             }
             Log.d(TAG, ">>Reset point1 and point2")
             WordSearchValues.point1 = Point(WordSearchValues.pointUnselected)
@@ -201,15 +201,15 @@ abstract class WordSearchCellsActivity : WordSearchBaseActivity() {
         var isFound = false
         var textViewId = 0
 
-        for (wordDto in wordSearchDtoArray) {
-            if (wordDto.compareCells(startCell, endCell, wordDirectionEnum)) {
-                if (wordDto.isFound) {
+        for (wordSearchDto in wordSearchDtoArray) {
+            if (wordSearchDto.compareCells(startCell, endCell, wordDirectionEnum)) {
+                if (wordSearchDto.isFound) {
                     return
                 }
                 markCellsAsFound(startCell, endCell, wordDirectionEnum)
-                wordDto.isFound = true
+                wordSearchDto.isFound = true
                 isFound = true
-                textViewId = wordDto.textViewId
+                textViewId = wordSearchDto.textViewId
                 break
             }
         }
@@ -261,7 +261,7 @@ abstract class WordSearchCellsActivity : WordSearchBaseActivity() {
                 row++
                 col++
             }
-        } else if (wordDirectionEnum == WordDirectionEnum.DiagonalUp) {
+        } else {
             var row = start / gameboardDimensions
             var col = start % gameboardDimensions
             val wordLength = (start % gameboardDimensions) - (end % gameboardDimensions)
@@ -271,8 +271,6 @@ abstract class WordSearchCellsActivity : WordSearchBaseActivity() {
                 row++
                 col--
             }
-        } else {
-            Log.d(TAG, ">>Undefined3")
         }
     }
 

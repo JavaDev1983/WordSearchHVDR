@@ -138,21 +138,33 @@ abstract class WordSearchGameboardActivity : WordSearchCellsActivity() {
         generateRandomLetters()
 
         for (index in 0 until wordSearchDtoArray.size) {
-            val wordDirectionEnum = WordDirectionEnum.entries[(0 until WordDirectionEnum.entries.size).random()]
-            Log.d(
-                TAG,
-                ">>Place word on the gameboard: word = ${wordSearchDtoArray[index].word} - length = ${wordSearchDtoArray[index].word.length} - direction = ${wordDirectionEnum}"
-            )
-            if (wordDirectionEnum == WordDirectionEnum.Horizontal) {
-                placeWordHorizontal(wordSearchDtoArray[index])
-            } else if (wordDirectionEnum == WordDirectionEnum.Vertical) {
-                placeWordVertical(wordSearchDtoArray[index])
-            } else if (wordDirectionEnum == WordDirectionEnum.DiagonalDown) {
-                placeWordDiagonalDown(wordSearchDtoArray[index])
-            } else if (wordDirectionEnum == WordDirectionEnum.DiagonalUp) {
-                placeWordDiagonalUp(wordSearchDtoArray[index])
-            } else {
-                Log.d(TAG, ">>Undefined4")
+            var directionAttempts = 0
+            var ordinal = (0 until WordDirectionEnum.entries.size).random()
+            while (directionAttempts < WordDirectionEnum.entries.size) {
+                val wordDirectionEnum = WordDirectionEnum.entries[ordinal]
+                Log.d(
+                    TAG,
+                    ">>Word placement: word = ${wordSearchDtoArray[index].word}" +
+                            " - length = ${wordSearchDtoArray[index].word.length}" +
+                            " - direction = ${wordDirectionEnum} - attempt = ${directionAttempts}"
+                )
+                if (wordDirectionEnum == WordDirectionEnum.Horizontal) {
+                    placeWordHorizontal(wordSearchDtoArray[index])
+                } else if (wordDirectionEnum == WordDirectionEnum.Vertical) {
+                    placeWordVertical(wordSearchDtoArray[index])
+                } else if (wordDirectionEnum == WordDirectionEnum.DiagonalDown) {
+                    placeWordDiagonalDown(wordSearchDtoArray[index])
+                } else {
+                    placeWordDiagonalUp(wordSearchDtoArray[index])
+                }
+                if (!wordSearchDtoArray[index].wordSkipped) {
+                    break   // Found word placement
+                }
+                ordinal++
+                if (ordinal == WordDirectionEnum.entries.size) {
+                    ordinal = 0
+                }
+                directionAttempts++
             }
         }
 
@@ -191,6 +203,8 @@ abstract class WordSearchGameboardActivity : WordSearchCellsActivity() {
             }
 
             if (foundLocation) {
+                wordSearchDto.wordSkipped = false
+                wordSearchDto.isFound = false
                 wordSearchDto.setStartEndCells(row * gameboardDimensions + range, WordDirectionEnum.Horizontal)
                 // Mark boardValues with word
                 for (col in range until range + wordSearchDto.word.length) {
@@ -233,6 +247,8 @@ abstract class WordSearchGameboardActivity : WordSearchCellsActivity() {
             }
 
             if (foundLocation) {
+                wordSearchDto.wordSkipped = false
+                wordSearchDto.isFound = false
                 wordSearchDto.setStartEndCells(range * gameboardDimensions + col, WordDirectionEnum.Vertical)
                 // Mark boardValues with word
                 for (row in range until range + wordSearchDto.word.length) {
@@ -282,6 +298,8 @@ abstract class WordSearchGameboardActivity : WordSearchCellsActivity() {
             }
 
             if (foundLocation) {
+                wordSearchDto.wordSkipped = false
+                wordSearchDto.isFound = false
                 wordSearchDto.setStartEndCells(rowRange * gameboardDimensions + colRange, WordDirectionEnum.DiagonalDown)
                 // Mark boardValues with word
                 row = rowRange
@@ -338,6 +356,8 @@ abstract class WordSearchGameboardActivity : WordSearchCellsActivity() {
             }
 
             if (foundLocation) {
+                wordSearchDto.wordSkipped = false
+                wordSearchDto.isFound = false
                 wordSearchDto.setStartEndCells(rowRange * gameboardDimensions + colRange, WordDirectionEnum.DiagonalUp)
                 // Mark boardValues with word
                 row = rowRange

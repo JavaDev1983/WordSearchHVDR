@@ -2,6 +2,7 @@
 
 * [App Features](#app-features)
 * [App Configuration Options](#app-configuration-options)
+* [Sceen Sample](#screen-samples)
 * [Project Import Tips](#project-import-tips)
 * [Configure Run Environment](#configure-run-environment)
 * [Readme File](#readme-file)
@@ -26,47 +27,66 @@ __Category:__ Word Search Puzzle
 
 ---
 
-### App Features
+## App Features
 
-* Word direction placement (HVDR):
+### Word Placement
+* Word placement direction (HVDR):
 	* Horizontal
 	* Vertical
 	* Diagonal Down
 	* Diagonal Up
-	* Reverse
-
+* Word placement is attempted for each direction. If a placement is not found for any of the directions, then the word is excluded.
 * Word placement can be reversed for any direction.
+
+
+### Word Selection
 * Word selection is performed by clicking the start of the word then clicking the end of the word. The selection can also be reversed (clicking the end of the word then clicking the start of the word).
 * Selecting a word will produce a random color for the word selection.
-* Game restart button will restart the game and reset any progress.
-* Show result button will show the words by marking them with a red border.
+
+### Game Buttons
+* __Game Restart__ button will restart the game and reset any progress.
+* __Show Result__ button will show the words by marking them with a red border.
+
+### Misc
 * Support for night theme (excludes the gameboard).
 * No support for screen rotation (portrait only).
 
 ---
 
-### App Configuration Options
-* Class `WordSearchValues` contains all configuration variables.
+## App Configuration Options
 
-* Variable `gameboardDimension` - size of the gameboard (set to 12 x12).
+Class `WordSearchValues` contains all configuration variables.
+1. Variable `gameboardDimension` - size of the gameboard (set to 12 x12).
 	* The larger the value, the more likely the gameboard will not fit the resolution of the device.
 
-* Variable `maxWordLength` - maximum length of the word from the repository to place on the gameboard (set to 10).
+2. Variable `maxWordLength` - maximum length of the word from the repository to place on the gameboard (set to 10).
 	* `maxWordLenght` must be less than or equal to gameboard dimension.
 	* The smaller the length, the more likely the app will find a placement for the word.
 
-* Variable `maxWords` - the number of words to place on the gameboard (set to 6).
+3. Variable `maxWords` - the number of words to place on the gameboard (set to 6).
 	* Must be an even number between 2 and 10.
 	* The larger the value, the more likely the app will not find a placement for the word on the gameboard.
 	* The larger the value, the more likely the buttons will not fit the resolution of the device.
 
-* Variable `maxPlacementAttempts` - number of attempts to find a word placement on the gameboard (set to 50).
+4. Variable `maxPlacementAttempts` - number of attempts to find a word placement on the gameboard (set to 50).
 	* If no replacement is found the word is excluded.
 	* If this value is set too high may cause the app to crash.
 
-* Variable `maxWordAttempts` - number of attempts to found a word from the repository that is equal to or less than `maxWordLength`.
+5. Variable `maxWordAttempts` - number of attempts to found a word from the repository that is equal to or less than `maxWordLength` (set to 100).
+
+> Note: Each of the above variables will affect the app performance and most be changed with caution. 
+
+## App Word Repository
+
+Class `WordRepository` contain a list of 40 words as a simple repository.
+* The length of the word vary. For example, Imperceptible is 13 character and will never be selected for a gameboard dimension of 12x12.
+* Variable `wordSet` is a Set and duplicate words will not exist.
+
+> Note: It's worth mentioning that this is not a best practice and `WordRepository` should be using a SQLite/Room database.
 
 ---
+
+## Screen Samples
 
 | Beginning screen of Word Search   |
 |-----------------------------------|
@@ -83,7 +103,7 @@ __Category:__ Word Search Puzzle
 
 ---
 
-### Project Import Tips
+## Project Import Tips
 
 After cloning this project and opening it in Android Studio, you may receive the following notification.
 
@@ -116,7 +136,7 @@ sdk.dir=C\:\\Users\\______\\AppData\\Local\\Android\\Sdk
 
 ---
 
-### Configure Run Environment
+## Configure Run Environment
 
 To setup an Android run environment, select `Add Configuration...`.
 
@@ -136,6 +156,6 @@ After the run environment is configured, ensure you have an emulator (Pixel 6 AP
 
 ---
 
-### Readme File
+## Readme File
 
 Android Studio may not display the README.md file due to a bug, just select the editor (code) tab or view it from GitHub.

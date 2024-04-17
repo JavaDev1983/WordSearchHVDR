@@ -24,10 +24,8 @@ class WordSearchDto(_word: String, _textViewId: Int, val _isReverse: Boolean = f
             endCell = _startCell + (word.length - 1) * gameboardDimensions
         } else if (wordDirectionEnum == WordDirectionEnum.DiagonalDown) {
             endCell = _startCell + (word.length - 1) * gameboardDimensions + (word.length - 1)
-        } else if (wordDirectionEnum == WordDirectionEnum.DiagonalUp) {
-            endCell = _startCell + (word.length - 1) * gameboardDimensions - (word.length - 1)
         } else {
-            Log.d(TAG, ">>Undefined1")
+            endCell = _startCell + (word.length - 1) * gameboardDimensions - (word.length - 1)
         }
         Log.d(TAG, ">>setStartEndCells $word $startCell $endCell")
     }
@@ -56,14 +54,12 @@ class WordSearchDto(_word: String, _textViewId: Int, val _isReverse: Boolean = f
             if (e - s != word.length - 1) {
                 return false
             }
-        } else if (wordDirectionEnum == WordDirectionEnum.DiagonalUp) {
+        } else {
             val e = end % gameboardDimensions
             val s = start % gameboardDimensions
             if (s - e != word.length - 1) {
                 return false
             }
-        } else {
-            Log.d(TAG, ">>Undefined2")
         }
         if (startCell == start && endCell == end) {
             Log.d(TAG, ">>Word found: $this")
