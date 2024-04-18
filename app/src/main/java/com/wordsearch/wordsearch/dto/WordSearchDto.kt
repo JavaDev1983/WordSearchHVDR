@@ -4,7 +4,7 @@ import android.util.Log
 import com.wordsearch.wordsearch.common.WordDirectionEnum
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.gameboardDimensions
 
-class WordSearchDto(_word: String, _textViewId: Int, val _isReverse: Boolean = false) {
+class WordSearchDto(_word: String, _textViewId: Int, val _reversed: Boolean = false) {
     private val TAG = javaClass.simpleName
 
     var word = _word
@@ -12,8 +12,8 @@ class WordSearchDto(_word: String, _textViewId: Int, val _isReverse: Boolean = f
     var endCell = 0
     var textViewId = _textViewId
     var textViewWord = _word
-    var isReverse = _isReverse
-    var isFound = false
+    var reversed = _reversed
+    var found = false
     var wordSkipped = false
 
     fun setStartEndCells(_startCell: Int, wordDirectionEnum: WordDirectionEnum) {
@@ -70,6 +70,6 @@ class WordSearchDto(_word: String, _textViewId: Int, val _isReverse: Boolean = f
     }
 
     override fun toString(): String {
-        return "WordSearchWordDto(word='$word', startCell=$startCell, endCell=$endCell, textViewId=$textViewId, textViewWord='$textViewWord', isReverse=$isReverse, isFound=$isFound, wordSkipped=$wordSkipped)"
+        return "WordSearchWordDto(word='$word', startCell=$startCell, endCell=$endCell, textViewId=$textViewId, textViewWord='$textViewWord', isReverse=$reversed, isFound=$found, wordSkipped=$wordSkipped)"
     }
 }

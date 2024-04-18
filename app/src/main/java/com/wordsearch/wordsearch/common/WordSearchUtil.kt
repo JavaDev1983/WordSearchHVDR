@@ -3,7 +3,7 @@ package com.wordsearch.wordsearch.common
 class WordSearchUtil {
     fun isFinished(): Boolean {
         for (wordSearchDto in WordSearchValues.wordSearchDtoArray) {
-            if (!wordSearchDto.isFound) {
+            if (!wordSearchDto.found) {
                 return false
             }
         }

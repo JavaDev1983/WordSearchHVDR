@@ -83,7 +83,7 @@ class WordSearchMainActivity : WordSearchGameboardActivity() {
             if (!wordSet.contains(word) && word.length <= maxWordLength) {
                 wordSet.add(word)
                 val wordSearchDto = WordSearchDto(word, wordTextViewIdList[cnt], Random.nextBoolean())
-                if (wordSearchDto.isReverse) {
+                if (wordSearchDto.reversed) {
                     wordSearchDto.word = word.reversed()
                 }
                 wordSearchDtoList.add(wordSearchDto)

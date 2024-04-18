@@ -189,7 +189,7 @@ abstract class WordSearchGameboardActivity : WordSearchCellsActivity() {
                 // Skip word since it cannot fit into the gameboard
                 Log.d(TAG, ">>Word skipped: ${wordSearchDto.word}")
                 wordSearchDto.wordSkipped = true
-                wordSearchDto.isFound = true
+                wordSearchDto.found = true
                 break
             }
 
@@ -204,7 +204,7 @@ abstract class WordSearchGameboardActivity : WordSearchCellsActivity() {
 
             if (foundLocation) {
                 wordSearchDto.wordSkipped = false
-                wordSearchDto.isFound = false
+                wordSearchDto.found = false
                 wordSearchDto.setStartEndCells(row * gameboardDimensions + range, WordDirectionEnum.Horizontal)
                 // Mark boardValues with word
                 for (col in range until range + wordSearchDto.word.length) {
@@ -233,7 +233,7 @@ abstract class WordSearchGameboardActivity : WordSearchCellsActivity() {
                 // Skip word since it cannot fit into the gameboard
                 Log.d(TAG, ">>Word skipped: ${wordSearchDto.word}")
                 wordSearchDto.wordSkipped = true
-                wordSearchDto.isFound = true
+                wordSearchDto.found = true
                 break
             }
 
@@ -248,7 +248,7 @@ abstract class WordSearchGameboardActivity : WordSearchCellsActivity() {
 
             if (foundLocation) {
                 wordSearchDto.wordSkipped = false
-                wordSearchDto.isFound = false
+                wordSearchDto.found = false
                 wordSearchDto.setStartEndCells(range * gameboardDimensions + col, WordDirectionEnum.Vertical)
                 // Mark boardValues with word
                 for (row in range until range + wordSearchDto.word.length) {
@@ -277,7 +277,7 @@ abstract class WordSearchGameboardActivity : WordSearchCellsActivity() {
                 // Skip word since it cannot fit into the gameboard
                 Log.d(TAG, ">>Word skipped: ${wordSearchDto.word}")
                 wordSearchDto.wordSkipped = true
-                wordSearchDto.isFound = true
+                wordSearchDto.found = true
                 break
             }
 
@@ -299,7 +299,7 @@ abstract class WordSearchGameboardActivity : WordSearchCellsActivity() {
 
             if (foundLocation) {
                 wordSearchDto.wordSkipped = false
-                wordSearchDto.isFound = false
+                wordSearchDto.found = false
                 wordSearchDto.setStartEndCells(rowRange * gameboardDimensions + colRange, WordDirectionEnum.DiagonalDown)
                 // Mark boardValues with word
                 row = rowRange
@@ -332,7 +332,7 @@ abstract class WordSearchGameboardActivity : WordSearchCellsActivity() {
                 // Skip word since it cannot fit into the gameboard
                 Log.d(TAG, ">>Word skipped: ${wordSearchDto.word}")
                 wordSearchDto.wordSkipped = true
-                wordSearchDto.isFound = true
+                wordSearchDto.found = true
                 break
             }
 
@@ -357,7 +357,7 @@ abstract class WordSearchGameboardActivity : WordSearchCellsActivity() {
 
             if (foundLocation) {
                 wordSearchDto.wordSkipped = false
-                wordSearchDto.isFound = false
+                wordSearchDto.found = false
                 wordSearchDto.setStartEndCells(rowRange * gameboardDimensions + colRange, WordDirectionEnum.DiagonalUp)
                 // Mark boardValues with word
                 row = rowRange

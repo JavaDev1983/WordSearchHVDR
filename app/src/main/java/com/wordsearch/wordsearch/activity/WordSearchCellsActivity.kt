@@ -203,11 +203,11 @@ abstract class WordSearchCellsActivity : WordSearchBaseActivity() {
 
         for (wordSearchDto in wordSearchDtoArray) {
             if (wordSearchDto.compareCells(startCell, endCell, wordDirectionEnum)) {
-                if (wordSearchDto.isFound) {
+                if (wordSearchDto.found) {
                     return
                 }
                 markCellsAsFound(startCell, endCell, wordDirectionEnum)
-                wordSearchDto.isFound = true
+                wordSearchDto.found = true
                 isFound = true
                 textViewId = wordSearchDto.textViewId
                 break
