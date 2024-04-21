@@ -79,7 +79,7 @@ Class `WordSearchValues` contains all configuration variables.
 ## App Word Repository
 
 Class `WordRepository` contain a list of 40 words as a simple repository.
-* The length of the word vary. For example, Imperceptible is 13 character and will never be selected for a gameboard dimension of 12x12.
+* The length of the word vary. For example, Imperceptible is 13 characters and will never be selected for a gameboard dimension of 12x12.
 * Variable `wordSet` is a Set and duplicate words will not exist.
 
 > Note: It's worth mentioning that this is not a best practice and `WordRepository` should be using a SQLite/Room database.
@@ -90,16 +90,16 @@ Class `WordRepository` contain a list of 40 words as a simple repository.
 
 | Beginning screen of Word Search   |
 |-----------------------------------|
-| ![Game Start](/images/start.png)  |
+| ![Game Start](./images/start.png)  |
 
 | Show Result button selected            |
 |--------------------------------------------|
-| ![Show Word Results](/images/results.png)  |
+| ![Show Word Results](./images/results.png)  |
 
 
 | End of game screen            |
 |--------------------------------------------|
-| ![Game Finished](/images/finish.png)  |
+| ![Game Finished](./images/finish.png)  |
 
 ---
 
@@ -107,17 +107,17 @@ Class `WordRepository` contain a list of 40 words as a simple repository.
 
 After cloning this project and opening it in Android Studio, you may receive the following notification.
 
-![Gradle JDK Missing](/images/Gradle-JDK-Missing.png)
+![Gradle JDK Missing](./images/Gradle-JDK-Missing.png)
 
 To resolve this notification, select the link `Select the Gradle JDK location` or change the JDK in settings.
 
 Replace the underscores with your user home directory. This path is dependent on your Android Studio and Gradle installation.
 
-![Gradle JDK Setting](/images/Gradle-JDK-Setting.png)
+![Gradle JDK Setting](./images/Gradle-JDK-Setting.png)
 
 Ensure the above step created a Gradle `local.properties` file in the project root directory and that it contains the Gradle SDK directory.
 
-![Local Properties Directory](/images/Local-Properties-Directory.png)
+![Local Properties Directory](./images/Local-Properties-Directory.png)
 
 The contents of `local.properties` should be your Gradle SDK directory.
 
@@ -140,19 +140,19 @@ sdk.dir=C\:\\Users\\______\\AppData\\Local\\Android\\Sdk
 
 To setup an Android run environment, select `Add Configuration...`.
 
-![Run Configuration](/images/Run-Configuration.png)
+![Run Configuration](./images/Run-Configuration.png)
 
 Next select `Add new run configuration...` then select Android App.
 
-![Run Configuration Android](/images/Run-Configuration-Android.png)
+![Run Configuration Android](./images/Run-Configuration-Android.png)
 
 Setup the following configuration.
 
-![Run Configuration Setup](/images/Run-Configuration-Setup.png)
+![Run Configuration Setup](./images/Run-Configuration-Setup.png)
 
 After the run environment is configured, ensure you have an emulator (Pixel 6 API 30) configured or your personal Android device is connected.
 
-![Run Configuration Emulator](/images/Run-Configuration-Emulator.png)
+![Run Configuration Emulator](./images/Run-Configuration-Emulator.png)
 
 ---
 
