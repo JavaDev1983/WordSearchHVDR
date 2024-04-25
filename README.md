@@ -5,6 +5,7 @@
 * [Sceen Sample](#screen-samples)
 * [Project Import Tips](#project-import-tips)
 * [Configure Run Environment](#configure-run-environment)
+* [AndroidTest](#androidtest)
 * [Readme File](#readme-file)
 
 ---
@@ -153,6 +154,17 @@ Setup the following configuration.
 After the run environment is configured, ensure you have an emulator (Pixel 6 API 30) configured or your personal Android device is connected.
 
 ![Run Configuration Emulator](./images/Run-Configuration-Emulator.png)
+
+---
+
+## AndroidTest
+
+To validate the app, run the following Android tests.
+
+* MainActivityTest
+* WordSearchMainActivityTest
+
+![Run AndroidTest](./images/WordSearchHVDR.gif)
 
 ---
 
