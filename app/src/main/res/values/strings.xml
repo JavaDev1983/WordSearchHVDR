@@ -8,7 +8,8 @@
     <string name="word_search_restart_game_button">Restart Game</string>
     <string name="word_search_show_result_button">Show Result</string>
 
-    <string name="congratulations">Congratulations!</string>
+    <string name="start_message">Find the following words</string>
+    <string name="finish_message">Congratulations!</string>
     <string name="try_again">Try again!</string>
 
     <string name="failed_init_title">Failed Initialization</string>

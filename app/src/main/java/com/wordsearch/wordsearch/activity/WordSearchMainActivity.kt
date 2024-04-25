@@ -15,6 +15,7 @@ import com.wordsearch.wordsearch.common.WordSearchValues.Companion.maxWordLength
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.maxWords
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.resultsActive
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.wordSearchDtoArray
+import com.wordsearch.wordsearch.common.WordSearchValues.Companion.wordCellStartEndTextViewId
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.wordTextViewIdList
 import com.wordsearch.wordsearch.dto.WordSearchDto
 import kotlin.random.Random
@@ -108,10 +109,24 @@ class WordSearchMainActivity : WordSearchGameboardActivity() {
     }
 
     private fun setWordTextView() {
+        var wordSide = 0
         for (wordSearchWordDto in wordSearchDtoArray) {
             val wordTextView: TextView = findViewById(wordSearchWordDto.textViewId)
             wordTextView.paintFlags = 0 // remove strikethrough
             wordTextView.text = if (wordSearchWordDto.wordSkipped) "" else wordSearchWordDto.textViewWord
+
+            if ((wordSide % 2) == 0) {
+                val wordStartTextView: TextView = findViewById(wordSearchWordDto.textViewId + wordCellStartEndTextViewId)
+                wordStartTextView.text = wordSearchWordDto.startCell.toString()
+                val wordEndTextView: TextView = findViewById(wordSearchWordDto.textViewId + (wordCellStartEndTextViewId * 2))
+                wordEndTextView.text = wordSearchWordDto.endCell.toString()
+            } else {
+                val wordStartTextView: TextView = findViewById(wordSearchWordDto.textViewId + (wordCellStartEndTextViewId * 3))
+                wordStartTextView.text = wordSearchWordDto.startCell.toString()
+                val wordEndTextView: TextView = findViewById(wordSearchWordDto.textViewId + (wordCellStartEndTextViewId * 4))
+                wordEndTextView.text = wordSearchWordDto.endCell.toString()
+            }
+            wordSide++
         }
     }
 

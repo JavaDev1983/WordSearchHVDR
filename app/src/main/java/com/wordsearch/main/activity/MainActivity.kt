@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun defineButtons() {
-        val randomButton: Button = findViewById(R.id.randomButton)
+        val randomButton: Button = findViewById(R.id.startButton)
         randomButton.setOnClickListener {
             val intent = Intent(this, WordSearchMainActivity::class.java)
             startActivity(intent)

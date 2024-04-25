@@ -26,6 +26,8 @@ import com.wordsearch.wordsearch.common.WordSearchValues.Companion.letters
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.maxPlacementAttempts
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.maxWords
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.wordSearchDtoArray
+import com.wordsearch.wordsearch.common.WordSearchValues.Companion.wordCellStartEndTextViewId
+import com.wordsearch.wordsearch.common.WordSearchValues.Companion.wordStartTextViewId
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.wordTextViewIdList
 import com.wordsearch.wordsearch.dto.WordSearchDto
 
@@ -44,6 +46,7 @@ abstract class WordSearchGameboardActivity : WordSearchCellsActivity() {
     private fun defineGameboard() {
         val gridLayout: GridLayout = findViewById(R.id.gameboardGridLayout)
 
+        var textViewId = 0
         for (i in 0 until gameboardDimensions) {
             val linearLayout = LinearLayout(this)
 
@@ -59,14 +62,15 @@ abstract class WordSearchGameboardActivity : WordSearchCellsActivity() {
             gridLayout.addView(linearLayout)
 
             for (j in 0 until gameboardDimensions) {
-                val textView = TextView(this)
+                val cellTextView = TextView(this)
                 val linearLayoutParams: ViewGroup.LayoutParams =
                     LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, 1f)
-                textView.setLayoutParams(linearLayoutParams)
-                textView.setTextColor(ContextCompat.getColor(this, R.color.black))  // black even on night theme
-                textView.gravity = Gravity.CENTER
-                textView.text = ""
-                linearLayout.addView(textView)
+                cellTextView.setLayoutParams(linearLayoutParams)
+                cellTextView.setTextColor(ContextCompat.getColor(this, R.color.black))  // black even on night theme
+                cellTextView.gravity = Gravity.CENTER
+                cellTextView.text = ""
+                cellTextView.id = textViewId++
+                linearLayout.addView(cellTextView)
             }
         }
     }
@@ -78,7 +82,7 @@ abstract class WordSearchGameboardActivity : WordSearchCellsActivity() {
         val layoutCnt = maxWords / 2
         val wordLinearLayout: LinearLayout = findViewById(R.id.wordLinearLayout)
 
-        var textViewId = 0
+        var textViewId = wordStartTextViewId
         for (i in 0 until layoutCnt) {
             val linearLayout = LinearLayout(this)
             val linearLayoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
@@ -87,29 +91,53 @@ abstract class WordSearchGameboardActivity : WordSearchCellsActivity() {
             linearLayout.gravity = Gravity.CENTER_HORIZONTAL
             wordLinearLayout.addView(linearLayout)
 
-            val leftTextView = TextView(this)
-            //leftTextView.id = View.generateViewId()
-            leftTextView.id = ++textViewId
-            wordTextViewIdList.add(leftTextView.id)
             val leftTextViewParams: ViewGroup.LayoutParams =
                 LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1f)
-            leftTextView.setLayoutParams(leftTextViewParams)
-            leftTextView.gravity = Gravity.CENTER
-            leftTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 19f)
-            leftTextView.text = ""
-            linearLayout.addView(leftTextView)
 
-            val rightTextView = TextView(this)
-            //rightTextView.id = View.generateViewId()
-            rightTextView.id = ++textViewId
-            wordTextViewIdList.add(rightTextView.id)
+            val leftWordTextView = TextView(this)
+            leftWordTextView.setLayoutParams(leftTextViewParams)
+            leftWordTextView.id = ++textViewId
+            leftWordTextView.gravity = Gravity.CENTER
+            leftWordTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 19f)
+            leftWordTextView.text = ""
+            linearLayout.addView(leftWordTextView)
+            wordTextViewIdList.add(leftWordTextView.id)
+
+            val leftStartCellTextView = TextView(this)
+            leftStartCellTextView.visibility = View.INVISIBLE
+            leftStartCellTextView.id = textViewId + wordCellStartEndTextViewId
+            leftStartCellTextView.text = ""
+            linearLayout.addView(leftStartCellTextView)
+
+            val leftEndCellTextView = TextView(this)
+            leftEndCellTextView.visibility = View.INVISIBLE
+            leftEndCellTextView.id = textViewId + (wordCellStartEndTextViewId * 2)
+            leftEndCellTextView.text = ""
+            linearLayout.addView(leftEndCellTextView)
+
             val rightLTextViewParams: ViewGroup.LayoutParams =
                 LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1f)
-            rightTextView.setLayoutParams(rightLTextViewParams)
-            rightTextView.gravity = Gravity.CENTER
-            rightTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 19f)
-            rightTextView.text = ""
-            linearLayout.addView(rightTextView)
+
+            val rightWordTextView = TextView(this)
+            rightWordTextView.setLayoutParams(rightLTextViewParams)
+            rightWordTextView.id = ++textViewId
+            rightWordTextView.gravity = Gravity.CENTER
+            rightWordTextView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 19f)
+            rightWordTextView.text = ""
+            linearLayout.addView(rightWordTextView)
+            wordTextViewIdList.add(rightWordTextView.id)
+
+            val rightStartCellTextView = TextView(this)
+            rightStartCellTextView.visibility = View.INVISIBLE
+            rightStartCellTextView.id = textViewId + (wordCellStartEndTextViewId * 3)
+            rightStartCellTextView.text = ""
+            linearLayout.addView(rightStartCellTextView)
+
+            val rightEndCellTextView = TextView(this)
+            rightEndCellTextView.visibility = View.INVISIBLE
+            rightEndCellTextView.id = textViewId + (wordCellStartEndTextViewId * 4)
+            rightEndCellTextView.text = ""
+            linearLayout.addView(rightEndCellTextView)
         }
     }
 

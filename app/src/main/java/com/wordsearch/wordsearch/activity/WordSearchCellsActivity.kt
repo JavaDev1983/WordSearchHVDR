@@ -225,7 +225,7 @@ abstract class WordSearchCellsActivity : WordSearchBaseActivity() {
         Log.d(TAG, ">>isFinished: $finished")
         if (finished) {
             val messageTextView: TextView = findViewById(R.id.messageTextview)
-            messageTextView.text = getString(R.string.congratulations)
+            messageTextView.text = getString(R.string.finish_message)
             val showResultButton: Button = findViewById(R.id.showResultsButton)
             showResultButton.visibility = View.INVISIBLE
         }

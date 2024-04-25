@@ -10,9 +10,12 @@ class WordSearchValues {
     companion object {
         var gameboardDimensions = 12    // Gameboard dimensions 12x12
         val maxWordLength = 10          // Maximum length of the word from the repository to place on the gameboard
-        val maxWords = 6                // Maximum number of words to place on the gameboard
+        val maxWords = 6                // Maximum number of words to search for within the gameboard
         val maxPlacementAttempts = 50   // Maximum attempts to place a word on the gameboard
         val maxWordAttempts = 100       // Maximum attempts to found a word from the repository
+
+        val wordStartTextViewId = 1000
+        val wordCellStartEndTextViewId = 100
 
         val letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
