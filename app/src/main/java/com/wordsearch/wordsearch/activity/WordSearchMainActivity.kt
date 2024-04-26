@@ -10,12 +10,13 @@ import android.widget.TextView
 import com.wordsearch.R
 import com.wordsearch.data.WordRepository
 import com.wordsearch.wordsearch.common.WordSearchValues
+import com.wordsearch.wordsearch.common.WordSearchValues.Companion.enableShowResultButton
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.maxWordAttempts
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.maxWordLength
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.maxWords
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.resultsActive
-import com.wordsearch.wordsearch.common.WordSearchValues.Companion.wordSearchDtoArray
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.wordCellStartEndTextViewId
+import com.wordsearch.wordsearch.common.WordSearchValues.Companion.wordSearchDtoArray
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.wordTextViewIdList
 import com.wordsearch.wordsearch.dto.WordSearchDto
 import kotlin.random.Random
@@ -56,8 +57,13 @@ class WordSearchMainActivity : WordSearchGameboardActivity() {
         generateGameboard()
         setMessageTextView()
         setWordTextView()
+
         val showResultButton: Button = findViewById(R.id.showResultsButton)
-        showResultButton.visibility = View.VISIBLE
+        if (enableShowResultButton) {
+            showResultButton.visibility = View.VISIBLE
+        } else {
+            showResultButton.visibility = View.GONE
+        }
     }
 
     // Clear all previously selected background cells

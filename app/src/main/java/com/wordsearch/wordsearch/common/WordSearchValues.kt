@@ -8,11 +8,12 @@ import com.wordsearch.wordsearch.dto.WordSearchDto
 class WordSearchValues {
 
     companion object {
-        var gameboardDimensions = 12    // Gameboard dimensions 12x12
-        val maxWordLength = 10          // Maximum length of the word from the repository to place on the gameboard
-        val maxWords = 6                // Maximum number of words to search for within the gameboard
-        val maxPlacementAttempts = 50   // Maximum attempts to place a word on the gameboard
-        val maxWordAttempts = 100       // Maximum attempts to found a word from the repository
+        var gameboardDimensions = 12        // Gameboard dimensions 12x12
+        val maxWordLength = 10              // Maximum length of the word from the repository to place on the gameboard
+        val maxWords = 6                    // Maximum number of words (2 to 10) to search for within the gameboard
+        val maxPlacementAttempts = 50       // Maximum attempts to place a word on the gameboard
+        val maxWordAttempts = 100           // Maximum attempts to found a word from the repository
+        val enableShowResultButton = true   // Ability to show or hide the `Show Result` button
 
         val wordStartTextViewId = 1000
         val wordCellStartEndTextViewId = 100

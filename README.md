@@ -1,20 +1,15 @@
 # WordSearchHVDR
 
-* [App Features](#app-features)
-* [App Configuration Options](#app-configuration-options)
-* [Sceen Sample](#screen-samples)
-* [Project Import Tips](#project-import-tips)
-* [Configure Run Environment](#configure-run-environment)
-* [AndroidTest](#androidtest)
-* [Readme File](#readme-file)
-
----
 
 __Purpose of Project:__ Many unsuccessful attempts looking for a complete word search puzzle for Android. This project will fill that void.
 
-__OS Platform: Android:__ Build: SDK 30
+__Category:__ Word Search Puzzle
 
-__Language:__ Kotlin
+__IDE:__ Android Studio Iguana | 2023.2.1
+
+__OS Platform:__ Android: Build: SDK 30
+
+__Programming Language:__ Kotlin
 
 __License:__ MIT License
 
@@ -22,9 +17,22 @@ __Version:__ 1.0
 
 __Date:__ 4/16/2024
 
-__Language:__ U.S. English (only)
+__Supported Language:__ U.S. English (only)
 
-__Category:__ Word Search Puzzle
+
+---
+
+### Index
+
+* [App Features](#app-features)
+* [App Configuration Options](#app-configuration-options)
+* [App Word Repository](#app-word-repository)
+* [Screen Sample](#screen-samples)
+* [Project Import Tips](#project-import-tips)
+* [Configure Run Environment](#configure-run-environment)
+* [AndroidTest](#androidtest)
+* [Readme File](#readme-file)
+* [Direct Install](#dirct-install)
 
 ---
 
@@ -57,7 +65,7 @@ __Category:__ Word Search Puzzle
 ## App Configuration Options
 
 Class `WordSearchValues` contains all configuration variables.
-1. Variable `gameboardDimension` - size of the gameboard (set to 12 x12).
+1. Variable `gameboardDimension` - size of the gameboard (set to 12x12).
 	* The larger the value, the more likely the gameboard will not fit the resolution of the device.
 
 2. Variable `maxWordLength` - maximum length of the word from the repository to place on the gameboard (set to 10).
@@ -75,15 +83,19 @@ Class `WordSearchValues` contains all configuration variables.
 
 5. Variable `maxWordAttempts` - number of attempts to found a word from the repository that is equal to or less than `maxWordLength` (set to 100).
 
-> Note: Each of the above variables will affect the app performance and most be changed with caution. 
+6. Variable `enableShowResultButton` - ability to show or hide the `Show Result` button (set to true).
+
+> Note: Each of the above variables will affect the app performance and most be changed with caution.
+
+---
 
 ## App Word Repository
 
 Class `WordRepository` contain a list of 40 words as a simple repository.
-* The length of the word vary. For example, Imperceptible is 13 characters and will never be selected for a gameboard dimension of 12x12.
+* The length of the word varies. For example, *Imperceptible* is 13 characters and will never be selected for a gameboard dimension of 12x12.
 * Variable `wordSet` is a Set and duplicate words will not exist.
 
-> Note: It's worth mentioning that this is not a best practice and `WordRepository` should be using a SQLite/Room database.
+> Note: It's worth mentioning that this is not a best practice and `WordRepository` should be referencing a SQLite/Room database.
 
 ---
 

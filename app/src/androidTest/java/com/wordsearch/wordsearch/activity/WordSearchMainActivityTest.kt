@@ -37,12 +37,7 @@ class WordSearchMainActivityTest {
         val finishMessage = context.resources.getString(R.string.finish_message)
 
         launchActivity<WordSearchMainActivity>().use { _ ->
-            // Click the "Show Result" button
-            onView(withId(R.id.showResultsButton)).perform(ViewActions.click())
-            // Confirm that the "Show Result" button was set to invisible
-            onView(withId(R.id.showResultsButton)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)))
-
-            // Get each gameboard word
+            // Get each gameboard words
             var wordDtoList = getWords()
             assertFalse(wordDtoList.isEmpty())
 
