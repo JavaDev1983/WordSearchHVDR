@@ -9,6 +9,7 @@ import android.widget.GridLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import com.wordsearch.R
 import com.wordsearch.wordsearch.common.CellColorEnum
 import com.wordsearch.wordsearch.common.WordDirectionEnum
@@ -21,6 +22,8 @@ import com.wordsearch.wordsearch.common.WordSearchValues.Companion.letterFoundAr
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.letterPlacedArray
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.resultsActive
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.wordSearchDtoArray
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 abstract class WordSearchCellsActivity : WordSearchBaseActivity() {
     private val TAG = javaClass.simpleName
@@ -62,7 +65,7 @@ abstract class WordSearchCellsActivity : WordSearchBaseActivity() {
 
     private fun onSelectHorizontal() {
         Log.d(TAG, ">>Horizontal selection")
-        val selectedColor = WordSearchUtil().getRandomCellColor()
+        val randomColor = WordSearchUtil().getRandomCellColor()
         val gameboardGridLayout: GridLayout = findViewById(R.id.gameboardGridLayout)
         for (i in 0 until gameboardGridLayout.childCount) {
             if (i != WordSearchValues.point1.x) {
@@ -72,13 +75,13 @@ abstract class WordSearchCellsActivity : WordSearchBaseActivity() {
             if (WordSearchValues.point1.y > WordSearchValues.point2.y) {
                 for (j in gameboardLinearLayout.childCount downTo 0) {
                     if (j >= WordSearchValues.point2.y && j <= WordSearchValues.point1.y) {
-                        gameboardLinearLayout.getChildAt(j).setBackgroundResource(selectedColor)
+                        gameboardLinearLayout.getChildAt(j).setBackgroundResource(randomColor)
                     }
                 }
             } else {
                 for (j in 0 until gameboardLinearLayout.childCount) {
                     if (j >= WordSearchValues.point1.y && j <= WordSearchValues.point2.y) {
-                        gameboardLinearLayout.getChildAt(j).setBackgroundResource(selectedColor)
+                        gameboardLinearLayout.getChildAt(j).setBackgroundResource(randomColor)
                     }
                 }
             }
@@ -92,20 +95,20 @@ abstract class WordSearchCellsActivity : WordSearchBaseActivity() {
 
     private fun onSelectVertical() {
         Log.d(TAG, ">>Vertical selection")
-        val selectedColor = WordSearchUtil().getRandomCellColor()
+        val randomColor = WordSearchUtil().getRandomCellColor()
         val gameboardGridLayout: GridLayout = findViewById(R.id.gameboardGridLayout)
         if (WordSearchValues.point1.x > WordSearchValues.point2.x) {
             for (i in gameboardGridLayout.childCount downTo 0) {
                 if (i >= WordSearchValues.point2.x && i <= WordSearchValues.point1.x) {
                     val gameboardLinearLayout = gameboardGridLayout.getChildAt(i) as LinearLayout
-                    gameboardLinearLayout.getChildAt(WordSearchValues.point1.y).setBackgroundResource(selectedColor)
+                    gameboardLinearLayout.getChildAt(WordSearchValues.point1.y).setBackgroundResource(randomColor)
                 }
             }
         } else {
             for (i in 0 until gameboardGridLayout.childCount) {
                 if (i >= WordSearchValues.point1.x && i <= WordSearchValues.point2.x) {
                     val gameboardLinearLayout = gameboardGridLayout.getChildAt(i) as LinearLayout
-                    gameboardLinearLayout.getChildAt(WordSearchValues.point1.y).setBackgroundResource(selectedColor)
+                    gameboardLinearLayout.getChildAt(WordSearchValues.point1.y).setBackgroundResource(randomColor)
                 }
             }
         }
@@ -117,7 +120,7 @@ abstract class WordSearchCellsActivity : WordSearchBaseActivity() {
 
     private fun onSelectDiagonalDown() {
         Log.d(TAG, ">>DiagonalDown selection")
-        val selectedColor = WordSearchUtil().getRandomCellColor()
+        val randomColor = WordSearchUtil().getRandomCellColor()
         val gameboardGridLayout: GridLayout = findViewById(R.id.gameboardGridLayout)
         var row = WordSearchValues.point1.x
         var col = WordSearchValues.point1.y
@@ -126,7 +129,7 @@ abstract class WordSearchCellsActivity : WordSearchBaseActivity() {
                 val gameboardLinearLayout = gameboardGridLayout.getChildAt(i) as LinearLayout
                 for (j in 0 until gameboardLinearLayout.childCount) {
                     if ((i == row && j == col)) {
-                        gameboardLinearLayout.getChildAt(j).setBackgroundResource(selectedColor)
+                        gameboardLinearLayout.getChildAt(j).setBackgroundResource(randomColor)
                         row--
                         col--
                     }
@@ -140,7 +143,7 @@ abstract class WordSearchCellsActivity : WordSearchBaseActivity() {
                 val gameboardLinearLayout = gameboardGridLayout.getChildAt(i) as LinearLayout
                 for (j in 0 until gameboardLinearLayout.childCount) {
                     if ((i == row && j == col)) {
-                        gameboardLinearLayout.getChildAt(j).setBackgroundResource(selectedColor)
+                        gameboardLinearLayout.getChildAt(j).setBackgroundResource(randomColor)
                         row++
                         col++
                     }
@@ -158,7 +161,7 @@ abstract class WordSearchCellsActivity : WordSearchBaseActivity() {
 
     private fun onSelectDiagonalUp() {
         Log.d(TAG, ">>DiagonalUp selection")
-        val selectedColor = WordSearchUtil().getRandomCellColor()
+        val randomColor = WordSearchUtil().getRandomCellColor()
         val gameboardGridLayout: GridLayout = findViewById(R.id.gameboardGridLayout)
         var row = WordSearchValues.point1.x
         var col = WordSearchValues.point1.y
@@ -167,7 +170,7 @@ abstract class WordSearchCellsActivity : WordSearchBaseActivity() {
                 val gameboardLinearLayout = gameboardGridLayout.getChildAt(i) as LinearLayout
                 for (j in 0 until gameboardLinearLayout.childCount) {
                     if ((i == row && j == col)) {
-                        gameboardLinearLayout.getChildAt(j).setBackgroundResource(selectedColor)
+                        gameboardLinearLayout.getChildAt(j).setBackgroundResource(randomColor)
                         row--
                         col++
                     }
@@ -181,7 +184,7 @@ abstract class WordSearchCellsActivity : WordSearchBaseActivity() {
                 val gameboardLinearLayout = gameboardGridLayout.getChildAt(i) as LinearLayout
                 for (j in 0 until gameboardLinearLayout.childCount) {
                     if ((i == row && j == col)) {
-                        gameboardLinearLayout.getChildAt(j).setBackgroundResource(selectedColor)
+                        gameboardLinearLayout.getChildAt(j).setBackgroundResource(randomColor)
                         row++
                         col--
                     }
@@ -226,8 +229,28 @@ abstract class WordSearchCellsActivity : WordSearchBaseActivity() {
         if (finished) {
             val messageTextView: TextView = findViewById(R.id.messageTextview)
             messageTextView.text = getString(R.string.finish_message)
+            messageTextView.visibility = View.GONE
             val showResultButton: Button = findViewById(R.id.showResultsButton)
-            showResultButton.visibility = View.INVISIBLE
+            showResultButton.visibility = View.GONE
+
+            displayFinishMessage()
+        }
+    }
+
+    fun displayFinishMessage() {
+        val messageGridLayout: GridLayout = findViewById(R.id.messageGridLayout)
+        messageGridLayout.visibility = View.VISIBLE
+
+        lifecycleScope.launch {
+            val randomColor = WordSearchUtil().getRandomCellColor()
+            for (i in 0 until messageGridLayout.childCount) {
+                val letterLinearLayout: LinearLayout = messageGridLayout.getChildAt(i) as LinearLayout
+                for (j in 0 until letterLinearLayout.childCount) {
+                    letterLinearLayout.getChildAt(j).visibility = View.VISIBLE
+                    letterLinearLayout.getChildAt(j).setBackgroundResource(randomColor)
+                    delay(50L)
+                }
+            }
         }
     }
 

@@ -69,8 +69,7 @@ class WordSearchMainActivity : WordSearchGameboardActivity() {
     // Clear all previously selected background cells
     private fun resetAllBackgroundCells() {
         val gameboardGridLayout: GridLayout = findViewById(R.id.gameboardGridLayout)
-        val childCount = gameboardGridLayout.childCount
-        for (i in 0 until childCount) {
+        for (i in 0 until gameboardGridLayout.childCount) {
             val gameboardLinearLayout: LinearLayout = gameboardGridLayout.getChildAt(i) as LinearLayout
             for (j in 0 until gameboardLinearLayout.childCount) {
                 gameboardLinearLayout.getChildAt(j).setBackgroundResource(0)
@@ -111,7 +110,19 @@ class WordSearchMainActivity : WordSearchGameboardActivity() {
 
     private fun setMessageTextView() {
         val messageTextView: TextView = findViewById(R.id.messageTextview)
-        messageTextView.text = getString(R.string.word_search_instruction)
+        messageTextView.text = getString(R.string.start_message)
+        messageTextView.visibility = View.VISIBLE
+
+        val messageGridLayout: GridLayout = findViewById(R.id.messageGridLayout)
+        messageGridLayout.visibility = View.GONE
+
+        for (i in 0 until messageGridLayout.childCount) {
+            val letterLinearLayout: LinearLayout = messageGridLayout.getChildAt(i) as LinearLayout
+            for (j in 0 until letterLinearLayout.childCount) {
+                letterLinearLayout.getChildAt(j).visibility = View.INVISIBLE
+                letterLinearLayout.getChildAt(j).setBackgroundResource(0)
+            }
+        }
     }
 
     private fun setWordTextView() {

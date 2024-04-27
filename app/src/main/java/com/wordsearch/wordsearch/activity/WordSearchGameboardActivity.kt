@@ -25,8 +25,8 @@ import com.wordsearch.wordsearch.common.WordSearchValues.Companion.letterPlacedA
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.letters
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.maxPlacementAttempts
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.maxWords
-import com.wordsearch.wordsearch.common.WordSearchValues.Companion.wordSearchDtoArray
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.wordCellStartEndTextViewId
+import com.wordsearch.wordsearch.common.WordSearchValues.Companion.wordSearchDtoArray
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.wordStartTextViewId
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.wordTextViewIdList
 import com.wordsearch.wordsearch.dto.WordSearchDto
@@ -413,8 +413,7 @@ abstract class WordSearchGameboardActivity : WordSearchCellsActivity() {
     // Populate the gameboard with what was generated inside of gameboardLetterArray
     private fun populateGameboardResults() {
         val gameboardGridLayout: GridLayout = findViewById(R.id.gameboardGridLayout)
-        val childCount = gameboardGridLayout.childCount
-        for (i in 0 until childCount) {
+        for (i in 0 until gameboardGridLayout.childCount) {
             val gameboardLinearLayout = gameboardGridLayout.getChildAt(i) as LinearLayout
             for (j in 0 until gameboardLinearLayout.childCount) {
                 (gameboardLinearLayout.getChildAt(j) as TextView).text = gameboardLetterArray[i][j]
@@ -425,8 +424,7 @@ abstract class WordSearchGameboardActivity : WordSearchCellsActivity() {
     // Show the results by highlighting each word with a red border
     fun showResults() {
         val gameboardGridLayout: GridLayout = findViewById(R.id.gameboardGridLayout)
-        val childCount = gameboardGridLayout.childCount
-        for (i in 0 until childCount) {
+        for (i in 0 until gameboardGridLayout.childCount) {
             val gameboardLinearLayout = gameboardGridLayout.getChildAt(i) as LinearLayout
             for (j in 0 until gameboardLinearLayout.childCount) {
                 (gameboardLinearLayout.getChildAt(j) as TextView).text = gameboardLetterArray[i][j]

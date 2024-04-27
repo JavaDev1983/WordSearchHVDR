@@ -14,7 +14,6 @@
 
     <string name="failed_init_title">Failed Initialization</string>
     <string name="word_search_failed_init_dialog">Failed to find any words for Word Search</string>
-    <string name="word_search_instruction">Find the following words</string>
 
     <string name="word_search_failed_gameboard_dimensions">gameboardDimensions must be 8 or greater</string>
     <string name="word_search_failed_max_words">maxWords must be an even number between 2 and 10</string>

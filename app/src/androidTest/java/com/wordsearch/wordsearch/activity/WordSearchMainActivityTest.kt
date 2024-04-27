@@ -1,11 +1,8 @@
 package com.wordsearch.wordsearch.activity
 
-import android.content.Context
 import android.graphics.Paint
-import android.util.Log
 import android.view.View
 import android.widget.TextView
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.core.app.launchActivity
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.UiController
@@ -15,7 +12,6 @@ import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
-import androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.platform.app.InstrumentationRegistry
 import com.wordsearch.R
@@ -54,6 +50,9 @@ class WordSearchMainActivityTest {
             wordDtoList.forEach { wordDto ->
                 assertEquals(wordDto.paintFlags, Paint.STRIKE_THRU_TEXT_FLAG)
             }
+//            runBlocking(Dispatchers.IO) {
+//                delay(2000)
+//            }
         }
     }
 
