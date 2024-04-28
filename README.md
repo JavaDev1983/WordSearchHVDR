@@ -1,7 +1,7 @@
 # WordSearchHVDR
 
 
-__Purpose of Project:__ Many unsuccessful attempts looking for a complete word search puzzle for Android. This project will fill that void.
+__Purpose of Project:__ Many unsuccessful attempts looking for a complete word search puzzle for Android, written in Kotlin and that actually works :smile:. This project will fill that void. Hopefully this project will help.
 
 __Category:__ Word Search Puzzle
 
@@ -32,7 +32,6 @@ __Supported Language:__ U.S. English (only)
 * [Configure Run Environment](#configure-run-environment)
 * [AndroidTest](#androidtest)
 * [Readme File](#readme-file)
-* [Direct Install](#dirct-install)
 
 ---
 
@@ -176,7 +175,10 @@ To validate the app, run the following Android tests.
 * MainActivityTest
 * WordSearchMainActivityTest
 
-![Run AndroidTest](./images/WordSearchHVDR.gif)
+| Sample of running WordSearchMainActivityTest  |
+|---|
+| ![Run AndroidTest](./images/WordSearchHVDR.gif)  |
+
 
 ---
 

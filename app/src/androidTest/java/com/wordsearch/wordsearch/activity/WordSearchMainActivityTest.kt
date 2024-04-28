@@ -18,6 +18,9 @@ import com.wordsearch.R
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.maxWords
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.wordCellStartEndTextViewId
 import com.wordsearch.wordsearch.common.WordSearchValues.Companion.wordStartTextViewId
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 import org.hamcrest.Matcher
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -50,9 +53,9 @@ class WordSearchMainActivityTest {
             wordDtoList.forEach { wordDto ->
                 assertEquals(wordDto.paintFlags, Paint.STRIKE_THRU_TEXT_FLAG)
             }
-//            runBlocking(Dispatchers.IO) {
-//                delay(2000)
-//            }
+            runBlocking(Dispatchers.IO) {
+                delay(2000)
+            }
         }
     }
 

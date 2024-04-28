@@ -47,7 +47,7 @@ class WordSearchMainActivity : WordSearchGameboardActivity() {
         showResultsButton.setOnClickListener {
             showResults()
             resultsActive = true
-            showResultsButton.visibility = View.INVISIBLE
+            showResultsButton.visibility = View.GONE
         }
     }
 
