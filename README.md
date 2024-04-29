@@ -1,7 +1,9 @@
 # WordSearchHVDR
 
 
-__Purpose of Project:__ Many unsuccessful attempts looking for a complete word search puzzle for Android, written in Kotlin and that actually works :smile:. This project will fill that void. Hopefully this project will help.
+__Purpose of Project:__ 
+Many unsuccessful attempts looking for a complete word search puzzle for Android, written in Kotlin, compiles and actually runs :smile:.
+Hopefully this project will fill that void.
 
 __Category:__ Word Search Puzzle
 
@@ -15,14 +17,14 @@ __License:__ MIT License
 
 __Version:__ 1.0
 
-__Date:__ 4/16/2024
+__Date:__ 5/1/2024
 
 __Supported Language:__ U.S. English (only)
 
 
 ---
 
-### Index
+### Table of Contents
 
 * [App Features](#app-features)
 * [App Configuration Options](#app-configuration-options)
@@ -121,9 +123,17 @@ After cloning this project and opening it in Android Studio, you may receive the
 
 ![Gradle JDK Missing](./images/Gradle-JDK-Missing.png)
 
-To resolve this notification, select the link `Select the Gradle JDK location` or change the JDK in settings.
+or
 
-Replace the underscores with your user home directory. This path is dependent on your Android Studio and Gradle installation.
+![Gradle JDK Missing](./images/Gradle-Home.png)
+
+To resolve this notification, select the link `Select the Gradle JDK location`.
+
+Update the `Gradle user home` with your Gradle install directory (see screenshot below).
+This location should be within your home directory.
+Replace the underscores with your user name.
+
+> Note: This path is dependent on your Android Studio and Gradle installation.
 
 ![Gradle JDK Setting](./images/Gradle-JDK-Setting.png)
 
