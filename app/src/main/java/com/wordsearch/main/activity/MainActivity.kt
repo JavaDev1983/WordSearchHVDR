@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Log.d(TAG, ">>Build: SDK ${Build.VERSION.SDK_INT} - Release ${Build.VERSION.RELEASE}")
+        Log.d(TAG, ">>Device SDK Version: ${Build.VERSION.SDK_INT} - Android Release: ${Build.VERSION.RELEASE} - Kotlin Version: ${KotlinVersion.CURRENT}")
 
         defineButtons()
     }

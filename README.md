@@ -1,26 +1,22 @@
 # WordSearchHVDR
 
+__Description:__ Word search puzzle for Android written in Kotlin.
 
-__Purpose of Project:__ 
-Many unsuccessful attempts looking for a complete word search puzzle for Android, written in Kotlin, compiles and actually runs :smile:.
-Hopefully this project will fill that void.
+__IDE:__ Android Studio | 2023.3.1
 
-__Category:__ Word Search Puzzle
+__Device SDK Version:__ 30
 
-__IDE:__ Android Studio Iguana | 2023.2.1
+__Android Version:__ 11
 
-__OS Platform:__ Android: Build: SDK 30
+__Kotlin Version:__ 1.9.0
 
-__Programming Language:__ Kotlin
+__Project Version:__ 1.0
 
-__License:__ MIT License
-
-__Version:__ 1.0
-
-__Date:__ 5/1/2024
+__Date:__ 5/4/2024
 
 __Supported Language:__ U.S. English (only)
 
+__License:__ MIT License
 
 ---
 
@@ -45,16 +41,16 @@ __Supported Language:__ U.S. English (only)
 	* Vertical
 	* Diagonal Down
 	* Diagonal Up
+	* Reversed
+* Word placement can be Reversed for any direction.
 * Word placement is attempted for each direction. If a placement is not found for any of the directions, then the word is excluded.
-* Word placement can be reversed for any direction.
-
 
 ### Word Selection
 * Word selection is performed by clicking the start of the word then clicking the end of the word. The selection can also be reversed (clicking the end of the word then clicking the start of the word).
 * Selecting a word will produce a random color for the word selection.
 
 ### Game Buttons
-* __Game Restart__ button will restart the game and reset any progress.
+* __Restart Game__ button will restart the game and reset any progress.
 * __Show Result__ button will show the words by marking them with a red border.
 
 ### Misc
@@ -71,7 +67,7 @@ Class `WordSearchValues` contains all configuration variables.
 
 2. Variable `maxWordLength` - maximum length of the word from the repository to place on the gameboard (set to 10).
 	* `maxWordLenght` must be less than or equal to gameboard dimension.
-	* The smaller the length, the more likely the app will find a placement for the word.
+	* The smaller the length, the more likely the app will find a placement for the word on the gameboard.
 
 3. Variable `maxWords` - the number of words to place on the gameboard (set to 6).
 	* Must be an even number between 2 and 10.
@@ -102,18 +98,18 @@ Class `WordRepository` contain a list of 40 words as a simple repository.
 
 ## Screen Samples
 
-| Beginning screen of Word Search   |
+| Beginning screen of WordSearchHVDR|
 |-----------------------------------|
-| ![Game Start](./images/start.png)  |
+| ![Game Start](./images/start.png) |
 
-| Show Result button selected            |
+| Show Result button selected                |
 |--------------------------------------------|
-| ![Show Word Results](./images/results.png)  |
+| ![Show Word Results](./images/results.png) |
 
 
-| End of game screen            |
+| End of game screen                         |
 |--------------------------------------------|
-| ![Game Finished](./images/finish.png)  |
+| ![Game Finished](./images/finish.png)      |
 
 ---
 
@@ -127,7 +123,9 @@ or
 
 ![Gradle JDK Missing](./images/Gradle-Home.png)
 
-To resolve this notification, select the link `Select the Gradle JDK location`.
+Try the following:
+
+Select the link `Select the Gradle JDK location`.
 
 Update the `Gradle user home` with your Gradle install directory (see screenshot below).
 This location should be within your home directory.
@@ -137,7 +135,7 @@ Replace the underscores with your user name.
 
 ![Gradle JDK Setting](./images/Gradle-JDK-Setting.png)
 
-Ensure the above step created a Gradle `local.properties` file in the project root directory and that it contains the Gradle SDK directory.
+After updating the Gradle configuration, ensure the above step created a Gradle `local.properties` file in the project root directory and that it contains the Gradle SDK directory.
 
 ![Local Properties Directory](./images/Local-Properties-Directory.png)
 
@@ -155,6 +153,14 @@ The contents of `local.properties` should be your Gradle SDK directory.
 # header note.
 sdk.dir=C\:\\Users\\______\\AppData\\Local\\Android\\Sdk
 ```
+
+Also try running Gradle Sync:
+
+`File -> Sync Project with Gradle Files`
+
+Then rebuild the project.
+
+`Build -> Make Project`
 
 ---
 
@@ -189,9 +195,8 @@ To validate the app, run the following Android tests.
 |---|
 | ![Run AndroidTest](./images/WordSearchHVDR.gif)  |
 
-
 ---
 
 ## Readme File
 
-Android Studio may not display the README.md file due to a bug, just select the editor (code) tab or view it from GitHub.
+Android Studio may not display a preview of the README.md file. Just view it from GitHub.
