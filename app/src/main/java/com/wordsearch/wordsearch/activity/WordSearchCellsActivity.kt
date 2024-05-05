@@ -238,6 +238,8 @@ abstract class WordSearchCellsActivity : WordSearchBaseActivity() {
     }
 
     fun displayFinishMessage() {
+        val restartGameButton: Button = findViewById(R.id.restartGameButton)
+        restartGameButton.visibility = View.INVISIBLE
         val messageGridLayout: GridLayout = findViewById(R.id.messageGridLayout)
         messageGridLayout.visibility = View.VISIBLE
 
@@ -251,6 +253,7 @@ abstract class WordSearchCellsActivity : WordSearchBaseActivity() {
                     delay(50L)
                 }
             }
+            restartGameButton.visibility = View.VISIBLE
         }
     }
 
