@@ -46,7 +46,7 @@ __License:__ MIT License
 * Word placement is attempted for each direction. If a placement is not found for any of the directions, then the word is excluded.
 
 ### Word Selection
-* Word selection is performed by clicking the start of the word then clicking the end of the word. The selection can also be reversed (clicking the end of the word then clicking the start of the word).
+* Word selection is performed by touching the start of the word then touching the end of the word. The selection can also be reversed (touching the end of the word then touching the start of the word).
 * Selecting a word will produce a random color for the word selection.
 
 ### Game Buttons
